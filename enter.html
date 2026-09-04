@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>悪夢のサーカス</title>
+
+  <style>
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background: #080808;
+      color: white;
+      font-family: sans-serif;
+      text-align: center;
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .container {
+      width: 90%;
+      max-width: 700px;
+    }
+
+    h1 {
+      font-size: 32px;
+      margin-bottom: 30px;
+    }
+
+    p {
+      font-size: 18px;
+      line-height: 2;
+    }
+
+    .number {
+      font-size: 32px;
+      font-weight: bold;
+      margin: 25px 0;
+    }
+
+    img {
+      width: 100%;
+      max-width: 650px;
+      margin-top: 30px;
+      border-radius: 5px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="container">
+
+    <h1>🎪 悪夢のサーカスへようこそ</h1>
+
+    <p>あなたの入場を確認しました。</p>
+
+    <p class="number">
+      あなたは <span id="visitorNumber">読み込み中...</span>人目 の入場者です。
+    </p>
+
+    <p>もう、後戻りはできません。</p>
+
+    <img src="circus.png" alt="悪夢のサーカス">
+
+  </div>
+
+
+  <script>
+
+    fetch("https://script.google.com/macros/s/AKfycbwarM5SxuW9HaT9zc_ZRatqPO7VmRmaxkPWcYzDp8DXEGVZWtuPc8yxeSNOzNEEMuQo4Q/exec?action=enter")
+      .then(response => response.json())
+      .then(data => {
+
+        document.getElementById("visitorNumber").textContent = data.visitorNumber;
+
+      })
+      .catch(error => {
+
+        document.getElementById("visitorNumber").textContent = "？";
+
+        console.log(error);
+
+      });
+
+  </script>
+
+</body>
+
+</html>
