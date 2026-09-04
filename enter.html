@@ -70,63 +70,32 @@
 
   </div>
 
-
   <script>
 
     const GAS_URL =
       "https://script.google.com/macros/s/AKfycbwarM5SxuW9HaT9zc_ZRatqPO7VmRmaxkPWcYzDp8DXEGVZWtuPc8yxeSNOzNEEMuQo4Q/exec";
 
+    fetch(GAS_URL + "?action=enter")
 
-    // join.htmlで作ったIDを取得
-    let userId =
-      localStorage.getItem("circusUserId");
+      .then(response => response.json())
 
+      .then(data => {
 
-    if (!userId) {
+        document.getElementById(
+          "visitorNumber"
+        ).textContent = data.visitorNumber;
 
-      document.getElementById(
-        "visitorNumber"
-      ).textContent = "受付未登録";
+      })
 
-    } else {
+      .catch(error => {
 
-      fetch(
-        GAS_URL +
-        "?action=enter&id=" +
-        encodeURIComponent(userId)
-      )
+        document.getElementById(
+          "visitorNumber"
+        ).textContent = "？";
 
-        .then(response => response.json())
+        console.log(error);
 
-        .then(data => {
-
-          if (data.error) {
-
-            document.getElementById(
-              "visitorNumber"
-            ).textContent = "受付未登録";
-
-            return;
-          }
-
-          document.getElementById(
-            "visitorNumber"
-          ).textContent =
-            data.visitorNumber;
-
-        })
-
-        .catch(error => {
-
-          document.getElementById(
-            "visitorNumber"
-          ).textContent = "？";
-
-          console.log(error);
-
-        });
-
-    }
+      });
 
   </script>
 
