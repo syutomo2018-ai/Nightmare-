@@ -1,13 +1,62 @@
 <!DOCTYPE html>
-<html>
+<html lang="ja">
 <head>
   <meta charset="UTF-8">
-  <title>アクセスカウンター</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>悪夢のサーカス</title>
+
+  <style>
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background: #0b0b0b;
+      color: white;
+      font-family: sans-serif;
+      text-align: center;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .container {
+      width: 90%;
+      max-width: 600px;
+    }
+
+    h1 {
+      font-size: 32px;
+      margin-bottom: 30px;
+    }
+
+    p {
+      font-size: 18px;
+      line-height: 2;
+    }
+
+    img {
+      width: 100%;
+      max-width: 500px;
+      margin-top: 30px;
+      border-radius: 5px;
+    }
+  </style>
 </head>
+
 <body>
 
-  <h1>アクセスありがとうございます</h1>
+  <div class="container">
 
+    <h1>🎪 悪夢のサーカスへようこそ</h1>
+
+    <p>あなたの入場を確認しました。</p>
+
+    <p>もう、後戻りはできません。</p>
+
+    <img src="circus.jpg" alt="悪夢のサーカス">
+
+  </div>
+
+  <!-- アクセスカウント -->
   <script>
     fetch("https://script.google.com/macros/s/AKfycbwarM5SxuW9HaT9zc_ZRatqPO7VmRmaxkPWcYzDp8DXEGVZWtuPc8yxeSNOzNEEMuQo4Q/exec");
   </script>
