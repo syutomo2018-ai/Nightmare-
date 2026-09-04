@@ -60,7 +60,7 @@
     <p>あなたの入場を確認しました。</p>
 
     <p class="number">
-      あなたは <span id="visitorNumber">---</span>人目 の入場者です。
+      あなたは <span id="visitorNumber">読み込み中...</span>人目 の入場者です。
     </p>
 
     <p>もう、後戻りはできません。</p>
@@ -69,19 +69,16 @@
 
   </div>
 
-
-  <!-- アクセスカウント -->
   <script>
-
     fetch("https://script.google.com/macros/s/AKfycbwarM5SxuW9HaT9zc_ZRatqPO7VmRmaxkPWcYzDp8DXEGVZWtuPc8yxeSNOzNEEMuQo4Q/exec")
       .then(response => response.text())
       .then(count => {
         document.getElementById("visitorNumber").textContent = count;
       })
       .catch(error => {
-        console.log("カウント取得エラー:", error);
+        document.getElementById("visitorNumber").textContent = "？";
+        console.log(error);
       });
-
   </script>
 
 </body>
