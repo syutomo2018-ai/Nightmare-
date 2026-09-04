@@ -1,16 +1,12 @@
 <!DOCTYPE html>
 <html lang="ja">
-
 <head>
-
   <meta charset="UTF-8">
-
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <title>悪夢のサーカス - 受付</title>
 
   <style>
-
     body {
       margin: 0;
       min-height: 100vh;
@@ -26,7 +22,7 @@
 
     .container {
       width: 90%;
-      max-width: 600px;
+      max-width: 700px;
     }
 
     h1 {
@@ -44,9 +40,7 @@
       font-weight: bold;
       margin: 20px 0;
     }
-
   </style>
-
 </head>
 
 <body>
@@ -76,19 +70,42 @@
       "https://script.google.com/macros/s/AKfycbwarM5SxuW9HaT9zc_ZRatqPO7VmRmaxkPWcYzDp8DXEGVZWtuPc8yxeSNOzNEEMuQo4Q/exec";
 
 
-    fetch(GAS_URL + "?action=join")
+    // このスマホ専用のIDを作る
+    let userId = localStorage.getItem("circusUserId");
+
+    if (!userId) {
+
+      userId =
+        crypto.randomUUID();
+
+      localStorage.setItem(
+        "circusUserId",
+        userId
+      );
+    }
+
+
+    fetch(
+      GAS_URL +
+      "?action=join&id=" +
+      encodeURIComponent(userId)
+    )
 
       .then(response => response.text())
 
       .then(count => {
 
-        document.getElementById("waitingNumber").textContent = count;
+        document.getElementById(
+          "waitingNumber"
+        ).textContent = count;
 
       })
 
       .catch(error => {
 
-        document.getElementById("waitingNumber").textContent = "？";
+        document.getElementById(
+          "waitingNumber"
+        ).textContent = "？";
 
         console.log(error);
 
@@ -97,5 +114,4 @@
   </script>
 
 </body>
-
 </html>
